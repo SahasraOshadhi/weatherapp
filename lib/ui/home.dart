@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
         fit: BoxFit.cover,
           ),
         ),
-        padding: const EdgeInsets.only(top: 70,left: 10,right: 20),
+        padding: const EdgeInsets.only(top: 70,left: 10,right: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -132,7 +132,7 @@ class _HomeState extends State<Home> {
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 40.0,
+                    fontSize: 50.0,
                   ),
                 ),
                 IconButton(
@@ -145,6 +145,7 @@ class _HomeState extends State<Home> {
                           controller: ModalScrollController.of(context),
                           child: Container(
                             height: size.height * .2,
+                            color: Colors.white,
                             padding: const EdgeInsets.symmetric(
                               horizontal: 20,
                               vertical: 10,
@@ -204,86 +205,97 @@ class _HomeState extends State<Home> {
                   },
                   icon: const Icon(
                     Icons.keyboard_arrow_down,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                 ),
 
               ],
             ),
 
-            Text(
-              currentDate,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 16.0,
+            Padding(
+              padding: const EdgeInsets.only(left: 4.0),
+              child: Text(
+                currentDate,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 19.0,
+                ),
               ),
             ),
             const SizedBox(
-              height: 50,
+              height: 60,
             ),
-            Container(
-              width: size.width,
-              height: 200,
-              decoration: BoxDecoration(
-                  color: myConstants.primaryColor,
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: myConstants.primaryColor.withOpacity(.5),
-                      offset: const Offset(0, 25),
-                      blurRadius: 10,
-                      spreadRadius: -12,
-                    )
-                  ]),
-              child: Stack(
-                clipBehavior: Clip.none,
+            Padding(
+              padding: const EdgeInsets.only(left: 3.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Positioned(
-                    top: -40,
-                    left: 20,
-                    child: SizedBox == ''
-                        ? const Text('')
-                        : Image.asset(
-                      'assets/' + weatherIcon,
-                      width: 150,
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 30,
-                    left: 20,
-                    child: Text(
-                      currentWeatherStatus,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 20,
-                    right: 20,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  Container(
+                    width: 367,
+                    height: 200,
+                    decoration: BoxDecoration(
+                        color: myConstants.primaryColor,
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
+                            color: myConstants.primaryColor.withOpacity(.5),
+                            offset: const Offset(0, 25),
+                            blurRadius: 10,
+                            spreadRadius: -12,
+                          )
+                        ]),
+                    child: Stack(
+                      clipBehavior: Clip.none,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
+                        Positioned(
+                          top: -40,
+                          left: 30,
+                          child: SizedBox == ''
+                              ? const Text('')
+                              : Image.asset(
+                            'assets/' + weatherIcon,
+                            width: 160,
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 30,
+                          left: 20,
                           child: Text(
-                            temperature.toString(),
+                            currentWeatherStatus,
                             style: const TextStyle(
-                              fontSize: 80,
-                              fontWeight: FontWeight.bold,
                               color: Colors.white,
+                              fontSize: 20,
                             ),
                           ),
                         ),
-                        const Text(
-                          'o',
-                          style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                        Positioned(
+                          top: 12,
+                          right: 30,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 4.0),
+                                child: Text(
+                                  temperature.toString(),
+                                  style: const TextStyle(
+                                    fontSize: 80,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              const Text(
+                                'o',
+                                style: TextStyle(
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              )
+                            ],
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -291,10 +303,10 @@ class _HomeState extends State<Home> {
               ),
             ),
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
+              padding: const EdgeInsets.symmetric(horizontal: 18),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -303,34 +315,39 @@ class _HomeState extends State<Home> {
                     value: windSpeed,
                     unit: 'km/h',
                     imageUrl: 'assets/windspeed.png',
+                    
                   ),
                   weatherItem(
                       text: 'Humidity',
                       value: humidity,
                       unit: '',
-                      imageUrl: 'assets/humidity.png'),
+                      imageUrl: 'assets/humidity.png',
+                  ),
                   weatherItem(
                     text: 'Temperature',
                     value: temperature,
-                    unit: 'C',
+                    unit: ' C',
                     imageUrl: 'assets/max-temp.png',
                   ),
                 ],
               ),
             ),
             const SizedBox(
-              height: 50,
+              height: 19,
             ),
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  'Today',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
-                    color: Colors.white,
+                Padding(
+                  padding: EdgeInsets.only(left: 5.0),
+                  child: Text(
+                    'Today',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 28,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
 
@@ -339,90 +356,92 @@ class _HomeState extends State<Home> {
             const SizedBox(
               height: 20,
             ),
-            SizedBox(
-              height: 109,
-              child: ListView.builder(
-                itemCount: hourlyWeatherForecast.length,
-                scrollDirection: Axis.horizontal,
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (BuildContext context, int index) {
-                  String currentTime =
-                  DateFormat('HH:mm:ss').format(DateTime.now());
-                  String currentHour = currentTime.substring(0, 2);
+            Padding(
+              padding: const EdgeInsets.only(left: 3.0),
+              child: SizedBox(
+                height: 109,
+                child: ListView.builder(
+                  itemCount: hourlyWeatherForecast.length,
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  itemBuilder: (BuildContext context, int index) {
+                    String currentTime =
+                    DateFormat('HH:mm:ss').format(DateTime.now());
+                    String currentHour = currentTime.substring(0, 2);
 
-                  String forecastTime = hourlyWeatherForecast[index]
-                  ["time"]
-                      .substring(11, 16);
-                  String forecastHour = hourlyWeatherForecast[index]
-                  ["time"]
-                      .substring(11, 13);
+                    String forecastTime = hourlyWeatherForecast[index]
+                    ["time"]
+                        .substring(11, 16);
+                    String forecastHour = hourlyWeatherForecast[index]
+                    ["time"]
+                        .substring(11, 13);
 
-                  String forecastWeatherName = hourlyWeatherForecast[index]["condition"]["text"];
-                  String forecastWeatherIcon = forecastWeatherName.replaceAll(' ', '').toLowerCase() + ".png";
+                    String forecastWeatherName = hourlyWeatherForecast[index]["condition"]["text"];
+                    String forecastWeatherIcon = forecastWeatherName.replaceAll(' ', '').toLowerCase() + ".png";
 
-                  String forecastTemperature = hourlyWeatherForecast[index]["temp_c"].round().toString();
-                  return Container(
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    margin: const EdgeInsets.only(right: 20),
-                    width: 65,
-                    decoration: BoxDecoration(
-                        color: currentHour == forecastHour
-                            ? Colors.white
-                            : myConstants.primaryColor,
-                        borderRadius:
-                        const BorderRadius.all(Radius.circular(50)),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: const Offset(0, 1),
-                            blurRadius: 5,
-                            color:
-                            myConstants.primaryColor.withOpacity(.2),
+                    String forecastTemperature = hourlyWeatherForecast[index]["temp_c"].round().toString();
+                    return Container(
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                      margin: const EdgeInsets.only(right: 10, bottom: 3.0),
+                      width: 65,
+                      decoration: BoxDecoration(
+                          color: currentHour == forecastHour
+                              ? Colors.white
+                              : myConstants.primaryColor,
+                          borderRadius:
+                          const BorderRadius.all(Radius.circular(50)),
+                          boxShadow: [
+                            BoxShadow(
+                              offset: const Offset(0, 1),
+                              blurRadius: 5,
+                              color:
+                              myConstants.primaryColor.withOpacity(.2),
+                            ),
+                          ]),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            forecastTime,
+                            style: const TextStyle(
+                              fontSize: 17,
+                              color: Colors.black,
+                            ),
                           ),
-                        ]),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          forecastTime,
-                          style: const TextStyle(
-                            fontSize: 17,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
+                          Image.asset(
+                            'assets/' + forecastWeatherIcon,
+                            width: 20,
                           ),
-                        ),
-                        Image.asset(
-                          'assets/' + forecastWeatherIcon,
-                          width: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: Text(
-                                forecastTemperature,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w600,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Text(
+                                  forecastTemperature,
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
-                            ),
-                            const Text(
-                              'o',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 10,
+                              const Text(
+                                'o',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 10,
 
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  );
-                },
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ],        ),

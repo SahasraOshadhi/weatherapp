@@ -12,20 +12,22 @@ class weatherItem extends StatelessWidget {
   final String unit;
   final String imageUrl;
 
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(text, style: const TextStyle(
           color: Colors.black54,
+          fontSize: 17,
         ),),
         const SizedBox(
-          height: 8,
+          height: 12,
         ),
         Container(
           padding: const EdgeInsets.all(10.0),
-          height: 60,
-          width: 60,
+          height: 90,
+          width: 90,
           decoration: const BoxDecoration(
             color: Color(0xffE0E8FB),
             borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -33,10 +35,11 @@ class weatherItem extends StatelessWidget {
           child: Image.asset(imageUrl),
         ),
         const SizedBox(
-          height: 8,
+          height: 10,
         ),
         Text(value.toString() + unit, style: const TextStyle(
           fontWeight: FontWeight.bold,
+          fontSize: 18,
         ),)
       ],
     );
